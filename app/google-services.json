@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "469416127319",
+    "project_id": "login-cc29f",
+    "storage_bucket": "login-cc29f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469416127319:android:250f84b29a59c082fa2c12",
+        "android_client_info": {
+          "package_name": "com.kheang.firebaseauthenticationloginregister"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBra4u3B5GBJJlljZBhXT5zb0F5Do3WIgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
