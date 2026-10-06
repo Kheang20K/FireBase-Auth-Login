@@ -46,7 +46,6 @@ fun LoginPage(
             ).show()
             else -> Unit
         }
-
     }
     Column (
         modifier = modifier

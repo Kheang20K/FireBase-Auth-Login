@@ -30,7 +30,7 @@ class AuthViewModel : ViewModel(){
         }
 
         _authState.value = AuthState.Loading
-        auth.createUserWithEmailAndPassword(email,password)
+//        auth.createUserWithEmailAndPassword(email,password)
         auth.signInWithEmailAndPassword(email,password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
