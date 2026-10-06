@@ -1,4 +1,4 @@
-package com.kheang.firebaseauthenticationloginregister.domain.database
+package com.kheang.firebaseauthenticationloginregister.data.database
 
 import androidx.room.Dao
 import androidx.room.Delete

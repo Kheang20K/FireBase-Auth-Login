@@ -2,8 +2,8 @@ package com.kheang.firebaseauthenticationloginregister.di
 
 import android.app.Application
 import androidx.room.Room
-import com.kheang.firebaseauthenticationloginregister.domain.database.AppDatabase
-import com.kheang.firebaseauthenticationloginregister.domain.database.CartDao
+import com.kheang.firebaseauthenticationloginregister.data.database.AppDatabase
+import com.kheang.firebaseauthenticationloginregister.data.database.CartDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

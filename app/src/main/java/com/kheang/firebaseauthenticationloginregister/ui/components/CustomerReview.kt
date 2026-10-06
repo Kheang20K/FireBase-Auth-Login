@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kheang.firebaseauthenticationloginregister.R
-import com.kheang.firebaseauthenticationloginregister.domain.models.Review
+import com.kheang.firebaseauthenticationloginregister.data.models.product.Review
 import com.kheang.firebaseauthenticationloginregister.viewmodel.ProductViewModel
 
 @Composable

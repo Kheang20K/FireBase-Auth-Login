@@ -23,8 +23,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.kheang.firebaseauthenticationloginregister.viewmodel.AuthState
-import com.kheang.firebaseauthenticationloginregister.viewmodel.AuthViewModel
+import com.kheang.firebaseauthenticationloginregister.ui.screen.page.AuthState
+import com.kheang.firebaseauthenticationloginregister.ui.screen.page.AuthViewModel
 
 @Composable
 fun SignupPage(modifier: Modifier = Modifier, navController: NavHostController, authViewModel: AuthViewModel){

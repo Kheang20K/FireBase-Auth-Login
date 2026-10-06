@@ -46,8 +46,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.kheang.firebaseauthenticationloginregister.R
-import com.kheang.firebaseauthenticationloginregister.domain.models.Product
-import com.kheang.firebaseauthenticationloginregister.domain.remote.ApiResult
+import com.kheang.firebaseauthenticationloginregister.data.models.product.Product
+import com.kheang.firebaseauthenticationloginregister.data.remote.ApiResult
 import com.kheang.firebaseauthenticationloginregister.viewmodel.ProductViewModel
 
 @Composable

@@ -1,7 +1,5 @@
 package com.kheang.firebaseauthenticationloginregister.ui.components
 
-import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -37,10 +35,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.kheang.firebaseauthenticationloginregister.domain.database.CartItem
+import com.kheang.firebaseauthenticationloginregister.data.database.CartItem
 import com.kheang.firebaseauthenticationloginregister.viewmodel.CartViewModel
 import com.kheang.firebaseauthenticationloginregister.viewmodel.ProductViewModel
 

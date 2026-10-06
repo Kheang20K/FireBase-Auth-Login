@@ -2,10 +2,9 @@ package com.kheang.firebaseauthenticationloginregister.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kheang.firebaseauthenticationloginregister.domain.database.CartItem
-import com.kheang.firebaseauthenticationloginregister.repository.CartRepository
+import com.kheang.firebaseauthenticationloginregister.data.database.CartItem
+import com.kheang.firebaseauthenticationloginregister.data.repository.CartRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn

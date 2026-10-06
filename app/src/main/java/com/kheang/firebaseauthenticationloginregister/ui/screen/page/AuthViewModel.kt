@@ -1,45 +1,55 @@
-package com.kheang.firebaseauthenticationloginregister.viewmodel
+package com.kheang.firebaseauthenticationloginregister.ui.screen.page
 
-import androidx.compose.runtime.Composable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.kheang.firebaseauthenticationloginregister.data.repository.TokenRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class AuthViewModel : ViewModel(){
+@HiltViewModel
+class AuthViewModel @Inject constructor(
+    private val tokenRepo : TokenRepository
+) : ViewModel(){
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
 
     private val _authState = MutableLiveData<AuthState>()
     val authState: LiveData<AuthState> = _authState
 
-    fun checkAuthStatus(){
-        if (auth.currentUser == null){
-            _authState.value = AuthState.Unauthenticated
-        }else{
-            _authState.value = AuthState.Authenticated
-        }
-    }
-
-    fun login(email: String, password: String){
-        if (email.isEmpty() || password.isEmpty()){
-            _authState.value = AuthState.Error("Email and password cannot be empty")
-            return
-        }
-
-        _authState.value = AuthState.Loading
-//        auth.createUserWithEmailAndPassword(email,password)
-        auth.signInWithEmailAndPassword(email,password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-                    _authState.value = AuthState.Authenticated
-                }else{
-                    _authState.value = AuthState.Error(task.exception?.message ?: "Unknown error")
-                }
+    fun login(
+        usern : String,
+        password: String
+    ){
+        viewModelScope.launch {
+            try {
+                tokenRepo.login(
+                    e
+                )
             }
+        }
     }
+
+//    fun login(email: String, password: String){
+//        if (email.isEmpty() || password.isEmpty()){
+//            _authState.value = AuthState.Error("Email and password cannot be empty")
+//            return
+//        }
+//
+//        _authState.value = AuthState.Loading
+//        auth.signInWithEmailAndPassword(email,password)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful){
+//                    _authState.value = AuthState.Authenticated
+//                }else{
+//                    _authState.value = AuthState.Error(task.exception?.message ?: "Unknown error")
+//                }
+//            }
+//    }
+
     fun signup(email: String, password: String){
         if (email.isEmpty() || password.isEmpty()){
             _authState.value = AuthState.Error("Email and password cannot be empty")

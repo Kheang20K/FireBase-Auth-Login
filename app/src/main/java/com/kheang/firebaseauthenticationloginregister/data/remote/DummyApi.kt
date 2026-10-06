@@ -1,8 +1,8 @@
-package com.kheang.firebaseauthenticationloginregister.domain.remote
+package com.kheang.firebaseauthenticationloginregister.data.remote
 
-import com.kheang.firebaseauthenticationloginregister.domain.models.product.Product
-import com.kheang.firebaseauthenticationloginregister.domain.models.user.AuthResponse
-import com.kheang.firebaseauthenticationloginregister.domain.models.user.LoginRequest
+import com.kheang.firebaseauthenticationloginregister.data.models.product.Product
+import com.kheang.firebaseauthenticationloginregister.data.models.user.AuthResponse
+import com.kheang.firebaseauthenticationloginregister.data.models.user.LoginRequest
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,7 +17,34 @@ interface DummyApi {
 
     @POST("auth/login")
     suspend fun getUser(
-        @Body request : LoginRequest
-    ): AuthResponse
+        @Body request : LoginUserAuth.LoginRequest
+    ): LoginUserAuth.LoginResponse
+
+    @POST("auth/refresh")
+    suspend fun refresh(
+        @Body request: LoginUserAuth.RefreshRequest
+    ): LoginUserAuth.RefreshResponse
+}
+
+
+object LoginUserAuth {
+    data class LoginRequest(
+        val username: String,
+        val password: String
+    )
+
+    data class LoginResponse(
+        val accessToken: String,
+        val refreshToken: String
+    )
+
+    data class RefreshRequest(
+        val refreshToken: String
+    )
+
+    data class RefreshResponse(
+        val accessToken: String,
+        val refreshToken: String
+    )
 
 }

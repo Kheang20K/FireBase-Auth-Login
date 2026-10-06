@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,8 +73,6 @@ dependencies {
      */
     val nav_version = "2.9.5"
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
-
     implementation("androidx.compose.runtime:runtime-livedata:1.7.3")
 
 
@@ -88,9 +87,6 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // --- Room (Database) ---
-//    implementation("androidx.room:room-runtime:2.6.1")
-//    kapt("androidx.room:room-compiler:2.6.1")
-//    implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-runtime:2.7.0-beta01")
     kapt("androidx.room:room-compiler:2.7.0-beta01")
     implementation("androidx.room:room-ktx:2.7.0-beta01")
@@ -102,9 +98,6 @@ dependencies {
             force("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.6.1")
         }
     }
-
-
-
     // --- Coroutines (for async work) ---
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
@@ -125,6 +118,18 @@ dependencies {
      */
     implementation("com.google.accompanist:accompanist-pager:0.32.0")
     implementation("com.google.accompanist:accompanist-pager-indicators:0.32.0")
+
+
+    // ✅ OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    //prefrence
+    implementation ("androidx.datastore:datastore-preferences:1.1.6")
+    // livedata - optional
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
 
 
 

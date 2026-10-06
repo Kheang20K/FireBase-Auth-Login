@@ -2,10 +2,10 @@ package com.kheang.firebaseauthenticationloginregister.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kheang.firebaseauthenticationloginregister.domain.models.Product
-import com.kheang.firebaseauthenticationloginregister.domain.models.ProductX
-import com.kheang.firebaseauthenticationloginregister.domain.remote.ApiResult
-import com.kheang.firebaseauthenticationloginregister.repository.RepositoryProduct
+import com.kheang.firebaseauthenticationloginregister.data.models.product.Product
+import com.kheang.firebaseauthenticationloginregister.data.models.product.ProductX
+import com.kheang.firebaseauthenticationloginregister.data.remote.ApiResult
+import com.kheang.firebaseauthenticationloginregister.data.repository.RepositoryProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

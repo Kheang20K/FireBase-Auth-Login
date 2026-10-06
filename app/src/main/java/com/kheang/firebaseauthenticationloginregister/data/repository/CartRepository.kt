@@ -1,4 +1,4 @@
-package com.kheang.firebaseauthenticationloginregister.repository
+package com.kheang.firebaseauthenticationloginregister.data.repository
 
 import com.kheang.firebaseauthenticationloginregister.data.database.CartDao
 import com.kheang.firebaseauthenticationloginregister.data.database.CartItem

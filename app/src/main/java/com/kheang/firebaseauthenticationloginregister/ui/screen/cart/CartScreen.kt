@@ -45,7 +45,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.kheang.firebaseauthenticationloginregister.domain.database.CartItem
 import com.kheang.firebaseauthenticationloginregister.viewmodel.CartViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)

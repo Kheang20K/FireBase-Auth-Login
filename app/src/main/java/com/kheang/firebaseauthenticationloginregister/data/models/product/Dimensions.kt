@@ -1,4 +1,4 @@
-package com.kheang.firebaseauthenticationloginregister.domain.models.product
+package com.kheang.firebaseauthenticationloginregister.data.models.product
 
 data class Dimensions(
     val depth: Double,

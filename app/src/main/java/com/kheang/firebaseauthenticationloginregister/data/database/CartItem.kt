@@ -1,4 +1,4 @@
-package com.kheang.firebaseauthenticationloginregister.domain.database
+package com.kheang.firebaseauthenticationloginregister.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

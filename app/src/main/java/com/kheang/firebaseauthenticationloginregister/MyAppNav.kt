@@ -3,7 +3,6 @@ package com.kheang.firebaseauthenticationloginregister
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -13,8 +12,7 @@ import com.kheang.firebaseauthenticationloginregister.page.SignupPage
 import com.kheang.firebaseauthenticationloginregister.screen.home.HomeScreen
 import com.kheang.firebaseauthenticationloginregister.ui.screen.cart.CartScreen
 import com.kheang.firebaseauthenticationloginregister.ui.screen.detail.DetailProductScreen
-import com.kheang.firebaseauthenticationloginregister.viewmodel.AuthViewModel
-import com.kheang.firebaseauthenticationloginregister.viewmodel.ProductViewModel
+import com.kheang.firebaseauthenticationloginregister.ui.screen.page.AuthViewModel
 
 @SuppressLint("ViewModelConstructorInComposable")
 @Composable

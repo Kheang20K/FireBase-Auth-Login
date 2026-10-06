@@ -1,4 +1,4 @@
-package com.kheang.firebaseauthenticationloginregister.domain.remote
+package com.kheang.firebaseauthenticationloginregister.data.remote
 
 sealed class ApiResult<out T> {
 
