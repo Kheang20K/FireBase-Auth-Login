@@ -1,18 +1,19 @@
 package com.kheang.firebaseauthenticationloginregister.ui.screen.page
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
-import com.kheang.firebaseauthenticationloginregister.data.repository.TokenRepository
+import com.kheang.firebaseauthenticationloginregister.data.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val tokenRepo : TokenRepository
+    private val tokenRepo : AuthRepository
 ) : ViewModel(){
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
@@ -21,15 +22,48 @@ class AuthViewModel @Inject constructor(
     val authState: LiveData<AuthState> = _authState
 
     fun login(
-        usern : String,
+        username : String,
         password: String
     ){
+        if (username.isBlank() || password.isBlank()) {
+            _authState.value = AuthState.Error("Username and password cannot be empty")
+            return
+        }
+
         viewModelScope.launch {
+            _authState.value = AuthState.Loading
             try {
                 tokenRepo.login(
-                    e
+                    username = username,
+                    password = password
                 )
+                _authState.value = AuthState.Authenticated
+            } catch (e: Exception) {
+                Log.e("AuthViewModel", "Login error: ${e.message}", e)
+                val errorMessage = when (e) {
+                    is retrofit2.HttpException -> {
+                        val errorJson = e.response()?.errorBody()?.string()
+                        if (!errorJson.isNullOrBlank()) {
+                            try {
+                                org.json.JSONObject(errorJson).optString("message", e.message())
+                            } catch (_: Exception) {
+                                e.message()
+                            }
+                        } else {
+                            e.message()
+                        }
+                    }
+                    else -> e.message ?: "Login failed"
+                }
+                _authState.value = AuthState.Error(errorMessage)
             }
+        }
+    }
+
+    fun logout(){
+        viewModelScope.launch {
+            tokenRepo.logout()
+            _authState.value = AuthState.Unauthenticated
         }
     }
 
@@ -66,10 +100,10 @@ class AuthViewModel @Inject constructor(
                 }
             }
     }
-    fun logout(){
-        auth.signOut()
-        _authState.value = AuthState.Unauthenticated
-    }
+//    fun logout(){
+//        auth.signOut()
+//        _authState.value = AuthState.Unauthenticated
+//    }
 
 }
 

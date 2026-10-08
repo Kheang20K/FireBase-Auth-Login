@@ -3,8 +3,8 @@ package com.kheang.firebaseauthenticationloginregister.di
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.kheang.firebaseauthenticationloginregister.data.local.AuthInterceptor
-import com.kheang.firebaseauthenticationloginregister.data.local.TokenAuthenticator
+import com.kheang.firebaseauthenticationloginregister.data.intercepter.AuthInterceptor
+import com.kheang.firebaseauthenticationloginregister.data.intercepter.TokenAuthenticator
 import com.kheang.firebaseauthenticationloginregister.data.local.tokenDataStore
 import com.kheang.firebaseauthenticationloginregister.data.remote.DummyApi
 import com.kheang.firebaseauthenticationloginregister.data.repository.RepositoryProduct
@@ -51,8 +51,6 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
-
 
     //access Token
     @Provides

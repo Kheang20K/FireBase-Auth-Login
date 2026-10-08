@@ -1,4 +1,4 @@
-package com.kheang.firebaseauthenticationloginregister.data.local
+package com.kheang.firebaseauthenticationloginregister.data.security
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
@@ -18,14 +18,12 @@ class CryptoManager @Inject constructor() {
     companion object{
         private const val KEYSTORE = "AndroidKeyStore"
         private const val KEY_ALIAS = "my_app_token_key"
-        private const val TRANSFORMATION =
-            "AES/GCM/NoPadding"
-
+        private const val TRANSFORMATION = "AES/GCM/NoPadding"
         private const val IV_SIZE = 12
         private const val TAG_LENGTH = 128
     }
 
-    fun getOrCreateKey(): SecretKey{
+    fun getOrCreateKey(): SecretKey {
 
         val keyStore = KeyStore.getInstance(KEYSTORE).apply { load(null) }
 
@@ -49,9 +47,9 @@ class CryptoManager @Inject constructor() {
             .build()
 
         keyGenerator.init(spec)
+
         return keyGenerator.generateKey()
     }
-
 
     fun encrypt(value : String): String{
 
@@ -109,7 +107,4 @@ class CryptoManager @Inject constructor() {
             StandardCharsets.UTF_8
         )
     }
-
-
-
 }

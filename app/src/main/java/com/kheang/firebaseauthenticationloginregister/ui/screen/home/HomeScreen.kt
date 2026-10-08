@@ -26,7 +26,7 @@ import com.kheang.firebaseauthenticationloginregister.viewmodel.ProductViewModel
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: AuthViewModel,
+    viewModel: AuthViewModel = hiltViewModel(),
     productViewModel: ProductViewModel = hiltViewModel(),
 ){
     val authState = viewModel.authState.observeAsState()

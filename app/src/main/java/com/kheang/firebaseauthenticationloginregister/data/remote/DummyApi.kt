@@ -16,7 +16,7 @@ interface DummyApi {
 
 
     @POST("auth/login")
-    suspend fun getUser(
+    suspend fun login(
         @Body request : LoginUserAuth.LoginRequest
     ): LoginUserAuth.LoginResponse
 

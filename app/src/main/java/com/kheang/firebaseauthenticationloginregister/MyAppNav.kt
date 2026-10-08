@@ -24,14 +24,14 @@ fun MyAppNav(modifier: Modifier = Modifier){
     NavHost(navController = navController, startDestination = startDestination,builder ={
 
         composable ("login"){
-            LoginPage(navController,AuthViewModel())
+            LoginPage(navController)
         }
         composable("signup"){
-            SignupPage(modifier,navController, AuthViewModel())
+            SignupPage(modifier,navController)
         }
 
         composable("home"){
-            HomeScreen(navController,AuthViewModel())
+            HomeScreen(navController)
         }
 
         composable("productDetail/{productId}") { backStackEntry ->
@@ -41,11 +41,5 @@ fun MyAppNav(modifier: Modifier = Modifier){
         composable ("cart"){
             CartScreen(navController)
         }
-
-
-
-
-
-
     })
 }

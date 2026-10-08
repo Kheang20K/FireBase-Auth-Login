@@ -1,6 +1,7 @@
-package com.kheang.firebaseauthenticationloginregister.data.local
+package com.kheang.firebaseauthenticationloginregister.data.intercepter
 
 import android.util.Log
+import com.kheang.firebaseauthenticationloginregister.data.local.SecureTokenManager
 import com.kheang.firebaseauthenticationloginregister.data.remote.DummyApi
 import com.kheang.firebaseauthenticationloginregister.data.remote.LoginUserAuth
 import kotlinx.coroutines.flow.first
@@ -10,32 +11,31 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
 import javax.inject.Inject
-import javax.inject.Singleton
+import javax.inject.Provider
 
-@Singleton
 class TokenAuthenticator @Inject constructor(
-    private val authApi : DummyApi,
-    private val tokenManager: SecureTokenManager
-): Authenticator{
+    private val authApiProvider: Provider<DummyApi>,
+    private val tokenManager: SecureTokenManager,
+): Authenticator {
     override fun authenticate(route: Route?, response: Response): Request? {
         // Avoid infinite refresh loops.
-        if (responseCount(response) >= 2){
-            return  null
+        if (responseCount(response) >= 2) {
+            return null
         }
 
         val refreshToken = runBlocking {
             tokenManager.refreshToken.first()
         }
 
-        if (refreshToken.isNullOrBlank()){
+        if (refreshToken.isNullOrBlank()) {
             return null
         }
 
         return try {
             val refreshResponse = runBlocking {
-                authApi.refresh(
+                authApiProvider.get().refresh(
                     LoginUserAuth.RefreshRequest(
-                        refreshToken = refreshToken
+                        refreshToken = refreshToken,
                     )
                 )
             }
@@ -43,25 +43,24 @@ class TokenAuthenticator @Inject constructor(
             runBlocking {
                 tokenManager.saveToken(
                     accessToken = refreshResponse.accessToken,
-                    refreshToken = refreshResponse.refreshToken
+                    refreshToken = refreshResponse.refreshToken,
                 )
             }
             response.request
                 .newBuilder()
                 .header(
                     "Authorization",
-                    "Bearer ${refreshResponse.accessToken}"
+                    "Bearer ${refreshResponse.accessToken}",
                 )
                 .build()
-        }catch (e: Exception){
+        } catch (e: Exception) {
             runBlocking {
                 tokenManager.clearTokens()
             }
-            Log.d("Authorization","${e.message}")
+            Log.d("Authorization", e.message ?: "Token refresh failed")
             null
         }
     }
-
 
     private fun responseCount(
         response: Response
@@ -74,7 +73,6 @@ class TokenAuthenticator @Inject constructor(
             count++
             prior = prior.priorResponse
         }
-
         return count
     }
 
